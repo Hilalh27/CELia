@@ -21,9 +21,7 @@ st.set_page_config(
     menu_items=None
 )
 
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("logo-insa.png", width=200)
+st.image("logo-insa.png", width=110)
 
 # Chargement des variables d'environnement
 load_dotenv()
