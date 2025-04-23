@@ -1,1 +1,6 @@
 streamlit
+faiss-cpu
+langchain
+huggingface_hub
+python-dotenv
+langchain-community
