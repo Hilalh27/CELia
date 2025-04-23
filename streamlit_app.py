@@ -12,19 +12,31 @@ from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain.chains.question_answering import load_qa_chain
 import re
 
+# Configuration de la page
+st.set_page_config(
+    page_title="CELia - Assistant INSA",
+    page_icon="✨",
+    layout="centered",
+    initial_sidebar_state="auto",
+    menu_items=None
+)
+
 # Chargement des variables d'environnement
 load_dotenv()
-# os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Préparation du corpus
-loader = TextLoader('regetude.txt')
-documents = loader.load()
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=4)
-docs = text_splitter.split_documents(documents)
+@st.cache_resource(show_spinner=False)
+def load_data():
+    with st.spinner("Chargement des données pédagogiques..."):
+        loader = TextLoader('regetude.txt')
+        documents = loader.load()
+        text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=4)
+        docs = text_splitter.split_documents(documents)
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        faiss_index = FAISS.from_documents(docs, embeddings)
+        return faiss_index
 
-# Embeddings et index
-embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-faiss_index = FAISS.from_documents(docs, embeddings)
+faiss_index = load_data()
 
 # LLM et prompt
 llm = HuggingFaceHub(
@@ -48,19 +60,44 @@ qa_chain_prompt = load_qa_chain(llm=llm, chain_type="stuff", prompt=prompt)
 qa_chain = RetrievalQA(retriever=faiss_index.as_retriever(), combine_documents_chain=qa_chain_prompt)
 
 # Interface Streamlit
-st.title("Assistant pédagogique INSA ✨")
-question = st.text_input("Pose une question 👇")
-if question:
-    result = qa_chain({"query": question})
-    raw_output = result["result"]
+st.title("CELia - Assistant INSA 💬✨")
+st.info(
+    "Je suis CELia, votre assistante pédagogique à l'INSA de Toulouse. "
+    "Posez-moi vos questions pédagogiques ou de conversation générale !",
+    icon="ℹ️"
+)
+
+# Initialisation de l'historique de chat
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Bonjour ! Je suis CELia. Posez-moi une question sur l'INSA ou discutez avec moi !"}
+    ]
+
+# Affichage des messages précédents
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+
+# Gestion de la nouvelle question
+if prompt := st.chat_input("Votre question"):
+    st.session_state.messages.append({"role": "user", "content": prompt})
     
-    # Expression régulière qui capture la réponse à une question, sans inclure la prochaine
-    pattern = rf"Question\s*:\s*{re.escape(question)}\s*Réponse\s*:\s*(.*?)(?:\nQuestion\s*:|\Z)"
-    match = re.search(pattern, raw_output, re.DOTALL | re.IGNORECASE)
+    with st.chat_message("user"):
+        st.write(prompt)
     
-    if match:
-        cleaned_output = match.group(1).strip()
-    else:
-        cleaned_output = "Désolé, je n'ai pas compris la réponse."
-    
-    st.write("**Réponse :**", cleaned_output)
+    with st.chat_message("assistant"):
+        with st.spinner("Je réfléchis..."):
+            result = qa_chain({"query": prompt})
+            raw_output = result["result"]
+            
+            # Nettoyage de la réponse
+            pattern = rf"Question\s*:\s*{re.escape(prompt)}\s*Réponse\s*:\s*(.*?)(?:\nQuestion\s*:|\Z)"
+            match = re.search(pattern, raw_output, re.DOTALL | re.IGNORECASE)
+            
+            if match:
+                response = match.group(1).strip()
+            else:
+                response = "Désolé, je n'ai pas compris la réponse."
+            
+            st.write(response)
+            st.session_state.messages.append({"role": "assistant", "content": response})
