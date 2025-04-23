@@ -51,4 +51,6 @@ st.title("Assistant pédagogique INSA ✨")
 question = st.text_input("Pose une question 👇")
 if question:
     result = qa_chain({"query": question})
-    st.write("**Réponse :**", result["result"])
+    raw_output = result["result"]
+    cleaned_output = raw_output.split("Réponse :")[-1].strip()
+    st.write("**Réponse :**", cleaned_output)
