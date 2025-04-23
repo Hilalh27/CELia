@@ -14,7 +14,7 @@ import re
 
 # Configuration de la page
 st.set_page_config(
-    page_title="CELia - Assistant INSA",
+    page_title="CELia - Assistante INSA",
     page_icon="✨",
     layout="centered",
     initial_sidebar_state="auto",
