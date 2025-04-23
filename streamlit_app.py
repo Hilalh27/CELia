@@ -16,7 +16,7 @@ load_dotenv()
 # os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Préparation du corpus
-loader = TextLoader('/regetude.txt')
+loader = TextLoader('regetude.txt')
 documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=4)
 docs = text_splitter.split_documents(documents)
