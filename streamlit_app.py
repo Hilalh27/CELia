@@ -10,6 +10,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain.chains.question_answering import load_qa_chain
+import re
 
 # Chargement des variables d'environnement
 load_dotenv()
@@ -52,5 +53,14 @@ question = st.text_input("Pose une question 👇")
 if question:
     result = qa_chain({"query": question})
     raw_output = result["result"]
-    cleaned_output = raw_output.split("Réponse :")[-1].strip()
+    
+    # Expression régulière qui capture la réponse à une question, sans inclure la prochaine
+    pattern = rf"Question\s*:\s*{re.escape(question)}\s*Réponse\s*:\s*(.*?)(?:\nQuestion\s*:|\Z)"
+    match = re.search(pattern, raw_output, re.DOTALL | re.IGNORECASE)
+    
+    if match:
+        cleaned_output = match.group(1).strip()
+    else:
+        cleaned_output = "Désolé, je n'ai pas compris la réponse."
+    
     st.write("**Réponse :**", cleaned_output)
