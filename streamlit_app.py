@@ -12,7 +12,6 @@ from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain.chains.question_answering import load_qa_chain
 import re
 
-# Configuration de la page
 st.set_page_config(
     page_title="CELia - Assistante INSA",
     page_icon="✨",
@@ -23,10 +22,8 @@ st.set_page_config(
 
 st.image("logo-insa.jpg", width=110)
 
-# Chargement des variables d'environnement
 load_dotenv()
 
-# Préparation du corpus
 @st.cache_resource(show_spinner=False)
 def load_data():
     with st.spinner("Chargement des données pédagogiques..."):
@@ -40,7 +37,6 @@ def load_data():
 
 faiss_index = load_data()
 
-# LLM et prompt
 llm = HuggingFaceHub(
     repo_id="mistralai/Mixtral-8x7B-Instruct-v0.1",
     model_kwargs={"temperature": 0.8, "top_p": 0.8, "top_k": 50},
@@ -48,7 +44,7 @@ llm = HuggingFaceHub(
 )
 
 template = """
-Tu t'appelles CELia. Tu es une assistante francophone de l'INSA de Toulouse. Tu réponds toujours en français, même si la question est posée dans une autre langue.
+Tu t'appelles CÉLia. Tu es une assistante francophone de l'INSA de Toulouse. Tu réponds toujours en français, même si la question est posée dans une autre langue.
 Tu peux répondre aussi bien à des questions pédagogiques qu'à des questions de conversation générale comme "ça va ?", "tu fais quoi ?", etc.
 Utilise le contexte ci-dessous si nécessaire pour répondre à la question. Si tu ne sais pas, dis-le simplement.
 Ta réponse doit être concise, naturelle, et tenir en 2 phrases maximum.
@@ -61,26 +57,23 @@ prompt = PromptTemplate(template=template, input_variables=["context", "question
 qa_chain_prompt = load_qa_chain(llm=llm, chain_type="stuff", prompt=prompt)
 qa_chain = RetrievalQA(retriever=faiss_index.as_retriever(), combine_documents_chain=qa_chain_prompt)
 
-# Interface Streamlit
-st.title("CELia - Assistante INSA 💬✨")
+# Streamlit
+st.title("CÉLia - Assistante IA de l'INSA 💬✨")
 st.info(
-    "Je suis CELia, votre assistante pédagogique à l'INSA de Toulouse. "
-    "Posez-moi vos questions pédagogiques ou de conversation générale !",
+    "Je suis CÉLia, votre assistante IA à l'INSA de Toulouse. "
+    "Posez-moi vos questions !",
     icon="ℹ️"
 )
 
-# Initialisation de l'historique de chat
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
-        {"role": "assistant", "content": "Bonjour ! Je suis CELia. Posez-moi une question sur l'INSA ou discutez avec moi !"}
+        {"role": "assistant", "content": "Bonjour ! Je suis CÉLia. Posez-moi une question sur l'INSA ou discutez avec moi ! :) "}
     ]
 
-# Affichage des messages précédents
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-# Gestion de la nouvelle question
 if prompt := st.chat_input("Votre question"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
@@ -99,7 +92,7 @@ if prompt := st.chat_input("Votre question"):
             if match:
                 response = match.group(1).strip()
             else:
-                response = "Désolé, je n'ai pas compris la réponse."
+                response = "Désolée, je n'ai pas compris la réponse."
             
             st.write(response)
             st.session_state.messages.append({"role": "assistant", "content": response})
