@@ -60,7 +60,7 @@ qa_chain_prompt = load_qa_chain(llm=llm, chain_type="stuff", prompt=prompt)
 qa_chain = RetrievalQA(retriever=faiss_index.as_retriever(), combine_documents_chain=qa_chain_prompt)
 
 # Interface Streamlit
-st.title("CELia - Assistant INSA 💬✨")
+st.title("CELia - Assistante INSA 💬✨")
 st.info(
     "Je suis CELia, votre assistante pédagogique à l'INSA de Toulouse. "
     "Posez-moi vos questions pédagogiques ou de conversation générale !",
