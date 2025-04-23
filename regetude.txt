@@ -331,3 +331,32 @@ Dans le cas où le niveau B2 n'est pas atteint en fin de 5ème année, le jury p
 # IV.1.d. Durée et validation des stages et séjour à l'étranger
 
 Au cours d'une scolarité à l'INSA, tout étudiant doit obligatoirement effectuer au moins 40 semaines de stages (ou d'expériences professionnelles) dont 14 semaines au minimum en entreprise.
+
+# Les Formations à l'INSA Toulouse
+
+Le cursus présenté correspond à la formation d’ingénieur sur cinq années, structurée en semestres. En première année, dite "tronc commun", les étudiants suivent des enseignements généralistes comprenant des bases scientifiques et techniques, des sciences humaines, des activités physiques et sportives, ainsi qu’un parcours professionnel individualisé (PPI) destiné à initier une réflexion sur leur orientation future.
+
+En deuxième année, les étudiants s’orientent progressivement vers des domaines plus spécifiques. Cette année de "pré-orientation" propose quatre grands axes : Ingénierie Chimique, Biochimique et Environnementale (ICBE), Ingénierie de la Construction (IC), Ingénierie des Matériaux, Composants et Systèmes (IMACS), et Modélisation, Informatique, Communication (MIC). Un stage d’exécution d’une durée d’un mois est prévu à la fin de cette année.
+
+En troisième année, la spécialisation s’affine. Les étudiants choisissent une voie parmi huit disciplines : Génie des Procédés et Environnement, Génie Biologique, Génie Civil, Génie Mécanique, Automatique et Électronique, Génie Physique, Informatique et Réseaux, ou Mathématiques Appliquées. Cette année marque la fin de la phase de pré-orientation et peut inclure un stage facultatif d’une durée de un à trois mois.
+
+En quatrième année, les étudiants intègrent pleinement leur spécialité choisie. Les enseignements deviennent plus techniques, en lien direct avec les compétences attendues dans le monde professionnel. La spécialisation se poursuit en cinquième année avec un approfondissement disciplinaire, accompagné d’un Projet Technique Personnel (PTP) et d’un stage de fin d’études de cinq mois minimum, indispensable à la validation du diplôme.
+
+Le diplôme d’ingénieur est délivré à l’issue de la cinquième année, après validation de tous les semestres, des projets et des stages. Il est également possible d’intégrer la formation à différents niveaux : en première année après une CPGE ou une Licence, en deuxième année après un DUT, une deuxième année de CPGE, un BTS ou une Licence, et en quatrième année après un Master 1 ou une troisième année de Licence.
+
+Ingénierie de la construction (IC)
+La pré-orientation INGÉNIERIE DE LA CONSTRUCTION (IC) est un premier pas vers les deux domaines les plus importants économiquement et en termes d’emploi de l’industrie : la construction mécanique et la construction civile. La formation donne des connaissances des lois fondamentales de la mécanique, de la résistance des matériaux, de la thermique et de la mécanique des fluides. Les méthodes numériques, les outils mathématiques et informatiques sont appliqués à la discipline. Les trois premiers semestres permettent de découvrir l’environnement des deux métiers. Le dernier semestre permet d’aborder intensivement l’une ou l’autre des spécialités : conception de mécanismes de transmission de puissance dans le génie mécanique, connaissance des sols et du comportement des matériaux dans le génie civil.
+Cette pré-orientation conduit vers les filières Génie Civil et Génie Mécanique.
+ 
+Ingénierie des Matériaux, Composants et Systèmes (IMACS)
+La pré-orientation INGÉNIERIE DES MATÉRIAUX, COMPOSANTS ET SYSTÈMES (IMACS) apporte les connaissances nécessaires pour comprendre la physique des matériaux et des composants de la micro et nano-électronique, la commande automatique des processus ainsi que pour concevoir des systèmes électroniques intégrés en vue de l’acquisition de données et de leur utilisation dans la commande des systèmes et processus en temps réel. En alternant des enseignements théoriques et des mises en œuvre expérimentales, cette pré-orientation sensibilise en particulier les futurs ingénieurs aux méthodes liées à la physique microscopique, à l’électronique analogique et numérique, au traitement du signal, à l’assemblage de composants et à la commande des systèmes.
+Cette pré-orientation conduit vers les filières Automatique et Électronique et Génie Physique.
+ 
+Modélisation, Informatique et Communication (MIC)
+La pré-orientation en MODÉLISATION, INFORMATIQUE ET COMMUNICATION (MIC) vise à sensibiliser les futurs ingénieurs aux méthodes liées au traitement de l’information, à l’ingénierie logicielle et matérielle, au calcul scientifique, aux techniques de communication et à leur mise en application. La formation a pour objectif de permettre aux étudiants de comprendre, modéliser, calculer et concevoir des systèmes complexes. Elle comporte des enseignements théoriques dans des disciplines comme les mathématiques, la physique, l’informatique, les télécommunications et les réseaux. Ces enseignements sont complétés par des mises en œuvre expérimentales sous forme de travaux pratiques, de projets et de bureaux d’études sur des applications concrètes.
+Cette pré-orientation conduit vers les filières : Mathématiques appliquées et Informatique et Réseaux.
+ 
+Ingénierie Chimique, Biochimique et Environnementale (ICBE)
+La pré-orientation INGÉNIERIE CHIMIQUE, BIOCHIMIQUE ET ENVIRONNEMENTALE (ICBE) apporte les connaissances nécessaires pour concevoir et mettre en œuvre les procédés de transformation physico-chimique et biologique de la matière. Ces procédés sont utilisés pour répondre aux enjeux mondiaux actuels pour la production de médicaments, d’aliments, d’eau ou d’énergie… mais aussi pour le traitement des pollutions engendrées par l’activité humaine (gaz, eaux usées, déchets…). La formation concerne la description et la caractérisation du comportement des molécules et des catalyseurs biologiques, la compréhension des principaux phénomènes physiques mis en jeu (écoulements, transferts de chaleur et de matière, conversion de l’énergie …) ainsi que des approches méthodologiques spécifiques permettant le calcul des installations. Des outils mathématiques et informatiques permettent l’analyse et la modélisation des systèmes. Des bases en instrumentation familiarisent à la commande et au contrôle des installations. La formation est complétée par une ouverture sur le contexte industriel réel dans lequel ces compétences sont utilisées.
+Cette pré-orientation conduit vers les filières Génie des Procédés, Eau, Énergie, Environnement et Génie Biologique.
+
