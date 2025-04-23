@@ -21,7 +21,7 @@ st.set_page_config(
     menu_items=None
 )
 
-st.image("logo-insa.png", width=150)
+st.image("logo-insa.png", width=200)
 
 # Chargement des variables d'environnement
 load_dotenv()
