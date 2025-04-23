@@ -13,10 +13,10 @@ from langchain.chains.question_answering import load_qa_chain
 
 # Chargement des variables d'environnement
 load_dotenv()
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+# os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Préparation du corpus
-loader = TextLoader('/content/drive/MyDrive/regetude.txt')
+loader = TextLoader('/regetude.txt')
 documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=4)
 docs = text_splitter.split_documents(documents)
@@ -29,6 +29,7 @@ faiss_index = FAISS.from_documents(docs, embeddings)
 llm = HuggingFaceHub(
     repo_id="mistralai/Mixtral-8x7B-Instruct-v0.1",
     model_kwargs={"temperature": 0.8, "top_p": 0.8, "top_k": 50},
+    huggingfacehub_api_token="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"
 )
 
 template = """
